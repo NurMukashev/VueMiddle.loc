@@ -1,23 +1,20 @@
 import AssignmentList from "./AssignmentList.js";
 import AssignmentCreate from "./AssignmentCreate.js";
+import AssignmentTags from "./AssignmentTags.js";
 export default{
 
     components: {
         AssignmentList,
         AssignmentCreate,
+        AssignmentTags,
     },
 
     template: `
-        <div class="flex gap-2">
-            <button
-                @click="currentTag = tag"
-                v-for="tag in tags"
-                class="border rounded px-1 py-px text-xs"
-                :class="{
-                    'border-blue-500 text-blue-500' : tag === currentTag
-                }"
-                >{{ tag }}</button>
-        </div>
+        <assignment-tags 
+            :initial-tags="assignments.map(a => a.tag)"
+            :current-tag="currentTag"
+            @change="currentTag = $event"
+        />
         <assignment-list :assignments="filters.inProgress" title="InProgress"></assignment-list>
         <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
         
@@ -50,10 +47,6 @@ export default{
 
             return this.assignments.filter(a => a.tag === this.currentTag);
         },
-
-        tags(){
-           return ['all', ...new Set(this.assignments.map(a => a.tag))];
-        }
     },
 
     methods: {
