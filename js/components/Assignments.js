@@ -10,10 +10,9 @@ export default{
     },
 
     template: `
-        <assignment-tags 
+        <assignment-tags
+            v-model:currentTag="currentTag" 
             :initial-tags="assignments.map(a => a.tag)"
-            :current-tag="currentTag"
-            @change="currentTag = $event"
         />
         <assignment-list :assignments="filters.inProgress" title="InProgress"></assignment-list>
         <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
