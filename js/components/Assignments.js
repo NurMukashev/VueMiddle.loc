@@ -22,11 +22,7 @@ export default{
 
     data(){
       return {
-        assignments: [
-            {name:'Finish the project', complete:false, id:1, tag:'science'},
-            {name:'Meeting with partners', complete:false, id:2, tag:'biology'},
-            {name:'Hire a consultant', complete:false, id:3, tag:'physics'},
-        ],
+        assignments: [],
 
         currentTag: 'all',
       };
@@ -46,6 +42,14 @@ export default{
 
             return this.assignments.filter(a => a.tag === this.currentTag);
         },
+    },
+
+    created(){
+      fetch('http://localhost:3001/assignments')
+          .then(response => response.json())
+          .then(assignments => {
+              this.assignments = assignments;
+          });
     },
 
     methods: {

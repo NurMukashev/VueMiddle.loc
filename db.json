@@ -1,0 +1,28 @@
+{
+  "assignments": [
+    {
+      "name":"Finish the project",
+      "complete":false,
+      "id":1,
+      "tag":"science"
+    },
+    {
+      "name":"Meeting with partners",
+      "complete":false,
+      "id":2,
+      "tag":"biology"
+    },
+    {
+      "name":"Hire a consultant",
+      "complete":false,
+      "id":3,
+      "tag":"physics"
+    },
+    {
+      "name":"Study Docker",
+      "complete":true,
+      "id":4,
+      "tag":"programming"
+    }
+  ]
+}
